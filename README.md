@@ -21,6 +21,8 @@ There's a lot to read through but basically it boils down to these lines:
 
 *pointer ^=(*pointer >> 1797118);
 
+
+
 and the inversion:
 
 *pointer ^=(*pointer >> 1797118);
