@@ -1,0 +1,32 @@
+//
+//  lcgreverse.cpp
+//  
+//
+//  Created by Jonathan Basile on 4/12/15.
+//
+
+#include <boost/multiprecision/gmp.hpp>
+#include <iostream>
+#include <string>
+
+int main() {
+boost::multiprecision::mpz_int m("");
+    boost::multiprecision::mpz_int a("");
+
+
+  
+    int i =0;
+    while (m % a >0) {
+     
+       boost::multiprecision::mpz_int remainder=m%a;
+               boost::multiprecision::mpz_int quotient=m/a;
+        if (a==2) {std::cout << ((quotient*2)+1)-m << "\n";}
+        std::cout << m%1000 << " = " << quotient%1000 << "*" << a%1000 << " + " << remainder%1000 << "\n";
+        m=a;
+        a=remainder;
+        i++;
+    }
+    i--;
+   
+    
+}
