@@ -5,28 +5,31 @@
 //  Created by Jonathan Basile on 4/12/15.
 //
 
+ #include <iostream>
 #include <boost/multiprecision/gmp.hpp>
-#include <iostream>
-#include <string>
 
 int main() {
 boost::multiprecision::mpz_int m("");
-    boost::multiprecision::mpz_int a("");
 
+boost::multiprecision::mpz_int a("");
 
-  
-    int i =0;
+ boost::multiprecision::mpz_int qarray[25];
+    qarray[0]=0;
+    qarray[1]=1;
+    int i =2;
+    boost::multiprecision::mpz_int reset = m;
+boost::multiprecision::mpz_int quotient;
+boost::multiprecision::mpz_int remainder;
     while (m % a >0) {
-     
-       boost::multiprecision::mpz_int remainder=m%a;
-               boost::multiprecision::mpz_int quotient=m/a;
-        if (a==2) {std::cout << ((quotient*2)+1)-m << "\n";}
-        std::cout << m%1000 << " = " << quotient%1000 << "*" << a%1000 << " + " << remainder%1000 << "\n";
-        m=a;
-        a=remainder;
-        i++;
-    }
-    i--;
-   
-    
+      remainder=m%a;
+      quotient=m/a;
+     // std::cout << m << " = " << quotient << "*" << a << " + " << remainder << "\n";
+//std::cout << i << "\n";
+      qarray[i] =qarray[i-2]-(qarray[i-1]*quotient);
+      m=a;
+      a=remainder;
+      i++;
+  }
+if (qarray[i-1]<0) {qarray[i-1]+=reset;}
+std::cout << qarray[i-1] << "\n";
 }
