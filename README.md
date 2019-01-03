@@ -9,7 +9,7 @@ I agonized for a long time about trying to share this code in the best possible 
 
 There's a lot to read through but basically it boils down to these lines:
 
-*pointer = (a*(*pointer)+c)%m;    \n
+*pointer = (a*(*pointer)+c)%m;   
 
 *pointer ^= (*pointer >> 1098239);
 *pointer ^=((*pointer%maskone) << 698879);
