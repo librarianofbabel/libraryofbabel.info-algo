@@ -7,30 +7,46 @@ No liability
 
 I agonized for a long time about trying to share this code in the best possible form and it got to the point where obviously that was stopping me from sharing it at all, so here it is without much explanation (my apologies). I've shared the algorithm for babelia.libraryofbabel.info because it is significantly more efficient than the one I wrote for libraryofbabel.info. 
 
+You'll need a lot of libraries installed if you want this code to work as it's written - the most important are gnu cgicc, boost multiprecision, gnu gmp, and ImageMagick
+
 There's a lot to read through but basically it boils down to these lines:
 
 *pointer = (a*(*pointer)+c)%m;   
 
 *pointer ^= (*pointer >> 1098239);
+
 *pointer ^=((*pointer%maskone) << 698879);
+
 *pointer ^=((*pointer%masktwo) << 1497599);
+
 *pointer ^=(*pointer >> 1797118);
 
 and the inversion:
 
 *pointer ^=(*pointer >> 1797118);
+
 *revp = *pointer^((*pointer % masktwo) << 1497599);
+
 *pointer = *pointer^((*revp % masktwo) << 1497599);
+
 *revp = *pointer^((*pointer % maskone) << 698879);
+
 *revp = *pointer^((*revp %maskone) << 698879);
+
 *revp = *pointer^((*revp %maskone) << 698879);
+
 *revp = *pointer^((*revp %maskone) << 698879);
+
 *pointer = *pointer^((*revp %maskone) << 698879);
+
 *revp = *pointer^(*pointer >> 1098239);
+
 *revp = *pointer^(*revp >> 1098239);
+
 *pointer = *pointer^(*revp >> 1098239);
 
 *pointer = (ainverse*(*pointer-c))%m;
+
 if (*pointer<0) {*pointer += m;}
 
 This is a combination of a linear congruential generator and a mersenne twister (sort of) if you want to read more about them.
@@ -56,11 +72,16 @@ ainverse needs to be found using Euclid's extended algorithm. I have code for th
 The bit-shifting operations are a little trickier to invert. I start with this:
 
 unsigned int temper(unsigned int x)
+
    {
    x ^= (x >> 11);
+   
    x ^= (x << 7) & 0x9D2C5680;
+   
    x ^= (x << 15) & 0xEFC60000;
+   
    x ^= (x >> 18);
+   
    return x;
    }
 The inversion function is:
@@ -68,13 +89,21 @@ The inversion function is:
 unsigned int detemper(unsigned int x)
    {
    x ^= (x >> 18);
+   
    x ^= (x << 15) & 0xEFC60000;
+   
    x ^= (x << 7) & 0x1680;
+   
    x ^= (x << 7) & 0xC4000;
+   
    x ^= (x << 7) & 0xD200000;
+   
    x ^= (x << 7) & 0x90000000;
+   
    x ^= (x >> 11) & 0xFFC00000;
+   
    x ^= (x >> 11) & 0x3FF800;
+   
    x ^= (x >> 11) & 0x7FF;
 
    return x;
