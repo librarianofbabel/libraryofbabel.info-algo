@@ -56,7 +56,9 @@ This is a combination of a linear congruential generator and a mersenne twister 
 Of course, the code here can only be copy-pasted if you are dealing with a permutation set of exactly the same size. If you would like to use this algorithm to permute other things (please do! Permute everything! And share with me what you make! jonathan.e.basile [at] gmail.com) here's what you need to do:
 
 For the LCG:
+
 x2 = (a(x) + c) % m
+
 x = ainverse(x2-c) % m
 
 m should be a number greater than the total number of possible permutations in your set (wolfram alpha is useful for figuring this out: https://www.wolframalpha.com). It should not be a power of the same base as your permutation set (i.e. if you are permuting a set of 32 elements, do not make m a power of 2).
