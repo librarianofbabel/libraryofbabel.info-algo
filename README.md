@@ -71,7 +71,7 @@ Also, follow the Hull–Dobell Theorem:
 
 Pick values fairly close to but less than m for a and c, or else adjacent permutations won't appear particularly random.
 
-ainverse needs to be found using Euclid's extended algorithm. I have code for this that I'll upload.
+ainverse needs to be found using Euclid's extended algorithm. I have uploaded code for this.
 
 The bit-shifting operations are a little trickier to invert. I start with this:
 
