@@ -7,7 +7,7 @@ No liability
 
 I agonized for a long time about trying to share this code in the best possible form and it got to the point where obviously that was stopping me from sharing it at all, so here it is without much explanation (my apologies). I've shared the algorithm for babelia.libraryofbabel.info because it is significantly more efficient than the one I wrote for libraryofbabel.info. 
 
-You'll need a lot of libraries installed if you want this code to work as it's written - the most important are gnu cgicc, boost multiprecision, gnu gmp, and ImageMagick
+You'll need several libraries installed if you want this code to work as it's written - gnu cgicc, boost multiprecision, gnu gmp, and ImageMagick 6 (note that ImageMagick 7 will require significant rewriting - if you're using OS X it's pretty easy to download ImageMagick 6 - for example you can get homebrew and run "brew install ImageMagick@6" in terminal).
 
 There's a lot to read through but basically it boils down to these lines:
 
